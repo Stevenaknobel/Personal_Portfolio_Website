@@ -38,6 +38,15 @@ button:hover {
     background-color: #0056b3;
 }
 
+.personal-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Makes it circular */
+    object-fit: cover; /* Ensures image fits without distortion */
+    margin: 0 auto;
+    display: block;
+}
+
 /* Header Styles */
 header {
     background-color: #333;
@@ -98,42 +107,141 @@ nav ul li a {
     padding: 40px 20px;
     text-align: center;
     background-color: #f4f4f4;
+    
+    display: flex; /* Enables flexbox on the container */
+    flex-wrap: wrap; /* Allows wrapping of the project cards */
+    justify-content: center; /* Centers the cards horizontally */
+    align-items: flex-start; /* Ensures the cards align at the top */
+    gap: 20px; /* Adds space between the project cards */
+}
+
+/* Ensure that the title is centered and not affected by flex layout */
+#projects h2 {
+    width: 100%;
+    text-align: center; /* Ensure title is centered */
+    margin-bottom: 20px; /* Adds some spacing below the title */
 }
 
 .project {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: flex-start; /* Align items at the top */
+    align-items: center; /* Center content horizontally */
     margin: 20px 0;
     background-color: #fff;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 400px; /* Ensures uniform height */
+    text-align: center; /* Center text inside project card */
+    padding: 20px; /* Space around content */
+    width: 100%; /* Makes sure the card takes full width */
+    max-width: 1200px; /* Limits width of the card */
+    box-sizing: border-box; /* Ensures padding is included in total width */
 }
 
 .project img {
-    max-width: 300px;
-    border-right: 2px solid #ddd;
-    padding: 20px;
+    max-width: 100%; /* Ensures images scale to their container */
+    height: auto; /* Maintains aspect ratio */
+    margin: 20px 0; /* Adds space above and below the image */
+    display: block; /* Ensures image is treated as a block-level element */
+    margin-left: auto;
+    margin-right: auto; /* Centers the image */
 }
 
 .project-info {
-    padding: 20px;
-    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Adds space between project details */
+    text-align: center; /* Ensures text is centered */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .project-info h3 {
+    font-size: 24px;
     margin-bottom: 10px;
 }
 
-.project-info p {
-    font-size: 16px;
-    margin-bottom: 10px;
+/* Grid for Project Images */
+.project-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Create a responsive grid for images */
+    gap: 20px; /* Space between the images */
+    justify-items: center; /* Centers the images inside the grid */
+    align-items: center; /* Ensures vertical centering of images */
+    width: 100%; /* Ensure the grid container takes full width */
+    max-width: 1200px; /* Set a max-width to prevent the grid from expanding too much */
+    margin: 0 auto; /* Centers the grid container on large screens */
+}
+
+.project-images img {
+    max-width: 100%; /* Ensures images scale within their grid container */
+    height: auto; /* Maintains the aspect ratio of images */
+    display: block;
+    max-height: 300px; /* Prevents images from getting too large vertically */
+    object-fit: contain; /* Maintains aspect ratio without distortion */
+}
+
+/* Adjustments for Mobile Devices */
+@media screen and (max-width: 768px) {
+    .project {
+        padding: 10px; /* Reduced padding for smaller screens */
+    }
+
+    .project-info h3 {
+        font-size: 20px;
+    }
+
+    .project-info p {
+        font-size: 14px;
+    }
+
+    .project-info a {
+        font-size: 14px;
+    }
+
+    .project-images {
+        grid-template-columns: 1fr; /* Stack images in one column on small screens */
+    } 
+
+    .project-images img {
+        max-width: 90%; /* Prevent images from being too large on smaller screens */
+        max-height: 250px; /* Limit image height */
+    }
+
+    .project {
+        width: 100%; /* Ensure the project card fills its container */
+    }
+}
+
+@media (max-width: 480px) {
+    .project-images {
+        grid-template-columns: 1fr; /* Keep images stacked on very small screens */
+    }
+
+    .project-images img {
+        max-width: 90%; /* Further limit image width */
+        max-height: 200px; /* Further limit image height */
+    }
 }
 
 /* Contact Section */
 #contact {
     padding: 40px 20px;
     text-align: center;
-    background-color: #fff;
+    background-color: #f4f4f4;
+
+    /* Ensuring the contact section is properly placed and centered */
+    clear: both; /* Clears any floats or previous layout influence */
+    margin-top: 40px; /* Adds some margin to separate it from the project section */
+}
+
+#contact div {
+    margin-bottom: 10px;
+}
+
+#contact a {
+    font-size: 16px;
+    color: #007bff;
 }
